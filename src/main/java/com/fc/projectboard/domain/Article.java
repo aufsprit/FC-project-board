@@ -24,17 +24,18 @@ public class Article extends AuditingFields {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Setter @ManyToOne(optional = false) @JoinColumn(name = "userId") private UserAccount userAccount; //유저 정보
+    @Setter @ManyToOne(optional = false) private UserAccount userAccount; // 유저 정보 (ID)
 
-    @Setter @Column(nullable = false) private String title; //제목
-    @Setter @Column(nullable = false, length = 10000) private String content; //본문
+    @Setter @Column(nullable = false) private String title; // 제목
+    @Setter @Column(nullable = false, length = 10000) private String content; // 본문
 
-    @Setter private String hashtag; //해시태그
+    @Setter private String hashtag; // 해시태그
 
     @ToString.Exclude
     @OrderBy("createdAt DESC")
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
+
 
     protected Article() {}
 
@@ -43,10 +44,6 @@ public class Article extends AuditingFields {
         this.title = title;
         this.content = content;
         this.hashtag = hashtag;
-    }
-
-    public Article(String userAccount, String title, String content, String hashtag) {
-        super();
     }
 
     public static Article of(UserAccount userAccount, String title, String content, String hashtag) {
@@ -59,8 +56,10 @@ public class Article extends AuditingFields {
         if (!(o instanceof Article article)) return false;
         return id != null && id.equals(article.id);
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
