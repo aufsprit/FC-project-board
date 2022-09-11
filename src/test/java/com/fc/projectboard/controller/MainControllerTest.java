@@ -22,7 +22,7 @@ class MainControllerTest {
     }
 
     @Test
-    void givenNoting_whenRequestingRootPage_thenRedirectsToArticlesPage() throws Exception {
+    void givenNothing_whenRequestingRootPage_thenRedirectsToArticlesPage() throws Exception {
         // Given
 
         // When & Then
@@ -32,4 +32,5 @@ class MainControllerTest {
                 .andExpect(forwardedUrl("/articles"))
                 .andDo(MockMvcResultHandlers.print());
     }
+
 }
