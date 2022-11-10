@@ -42,7 +42,7 @@ public record ArticleCommentDto(
         return ArticleComment.of(
                 article,
                 userAccount,
-                content
+                content //실제로 들어가는 부분
         );
     }
 }
