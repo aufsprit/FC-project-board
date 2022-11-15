@@ -25,7 +25,7 @@
         )}"/>
                 <attr sel="th.hashtag/a" th:text="'해시태그'" th:href="@{/articles(
             page=${articles.number},
-            sort='hashtag' + (*{sort.getOrderFor('hashtags')} != null ? (*{sort.getOrderFor('hashtags').direction.name} != 'DESC' ? ',desc' : '') : ''),
+            sort='hashtag' + (*{sort.getOrderFor('hashtag')} != null ? (*{sort.getOrderFor('hashtag').direction.name} != 'DESC' ? ',desc' : '') : ''),
             searchType=${param.searchType},
             searchValue=${param.searchValue}
         )}"/>
@@ -53,7 +53,8 @@
             </attr>
         </attr>
 
-        <attr sel="#write-article" th:href="@{/articles/form}" />
+        <attr sel="#write-article" sec:authorize="isAuthenticated()" th:href="@{/articles/form}" />
+        <!--sec:authorize="isAuthenticated() 인증된 경우에만 보이게-->
 
         <attr sel="#pagination"> <!--index.html 의 pagination 을 셀렉-->
             <attr sel="li[0]/a"

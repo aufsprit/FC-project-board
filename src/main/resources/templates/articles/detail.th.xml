@@ -11,6 +11,7 @@
         <attr sel="#hashtag" th:text="*{hashtag}" />
         <attr sel="#article-content/pre" th:text="*{content}" />
 
+        <!--인증 여부 확인 그리고 현재 유저 아이디가 인증된 유저와 동일한가를 체크 -->
         <attr sel="#article-buttons" th:if="${#authorization.expression('isAuthenticated()')} and *{userId} == ${#authentication.name}">
             <attr sel="#delete-article-form" th:action="'/articles/' + *{id} + '/delete'" th:method="post">
                 <attr sel="#update-article" th:href="'/articles/' + *{id} + '/form'" />
@@ -28,6 +29,7 @@
                     <attr sel="div/strong" th:text="${articleComment.nickname}" />
                     <attr sel="div/small/time" th:datetime="${articleComment.createdAt}" th:text="${#temporals.format(articleComment.createdAt, 'yyyy-MM-dd HH:mm:ss')}" />
                     <attr sel="div/p" th:text="${articleComment.content}" />
+                    <!--인증 여부 확인 그리고 현재 유저 아이디가 인증된 유저와 동일한가를 체크하고 버튼을 보이게-->
                     <attr sel="button" th:if="${#authorization.expression('isAuthenticated()')} and ${articleComment.userId} == ${#authentication.name}" />
                 </attr>
             </attr>
