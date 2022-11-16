@@ -42,6 +42,7 @@ spring:
 spring:
   config.activate.on-profile: heroku # profiles.active 에서 바뀌었다고함.. 프로파일명 세팅
   datasource:
-    url: ${CLEARDB_DATABASE_URL} # 환경변수 넣기
+    url: ${JAWSDB_URL} # 환경변수 넣기
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa.hibernate.ddl-auto: create
   sql.init.mode: always
