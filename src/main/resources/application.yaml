@@ -36,3 +36,12 @@ spring:
     detection-strategy: annotated
   thymeleaf3:
     decoupled-logic: true
+
+---
+
+spring:
+  config.activate.on-profile: heroku # profiles.active 에서 바뀌었다고함.. 프로파일명 세팅
+  datasource:
+    url: ${CLEARDB_DATABASE_URL} # 환경변수 넣기
+  jpa.hibernate.ddl-auto: create
+  sql.init.mode: always
