@@ -33,4 +33,4 @@ Spring Boot
 * Heroku
 
 ## 데모 페이지
-* https://project-board-aufsprit.herokuapp.com/
+* ~~https://project-board-aufsprit.herokuapp.com/~~
